@@ -29,6 +29,10 @@
     display:grid;
     gap:10px;
   }
+
+  /* 100px entre bloque y bloque (entre cards) */
+  .card + .card{ margin-top:100px; }
+
   h2{margin:0;font-size:18px;font-weight:bold;}
   p{margin:0;font-size:18px;line-height:1.4;}
   button{
@@ -80,6 +84,18 @@
     resize:vertical;
     text-transform: uppercase;
   }
+
+  /* no mostrar palabras del dictado */
+  .secret{
+    position:absolute !important;
+    left:-9999px !important;
+    top:-9999px !important;
+    width:1px !important;
+    height:1px !important;
+    overflow:hidden !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+  }
 </style>
 </head>
 
@@ -95,7 +111,7 @@
   <!-- BLOQUE 1 -->
   <div class="card">
     <h2 id="name-ol1">QUE ERAN</h2>
-    <p id="txt-ol1">ERAN JUEGOS DEPORTIVOS QUE SE HACIAN EN LA ANTIGUA GRECIA PARA MOSTRAR FUERZA Y RESPETO.</p>
+    <p id="txt-ol1">ERAN JUEGOS DEPORTIVOS DE LA ANTIGUA GRECIA. SE HACIAN PARA COMPETIR Y DEMOSTRAR FUERZA. LOS ATLETAS PARTICIPABAN EN DIFERENTES PRUEBAS. NO ERAN GUERRAS NI PELEAS. ERAN JUEGOS CON NORMAS Y RESPETO.</p>
 
     <div class="row">
       <button onclick="leerNormal('name-ol1','txt-ol1')">▶ ESCUCHAR</button>
@@ -128,7 +144,7 @@
       </div>
 
       <div class="q">
-        <div class="qtext" id="q1-3">ERAN PARA HACER DAÑO</div>
+        <div class="qtext" id="q1-3">ERAN GUERRAS</div>
         <div class="row">
           <button onclick="speakFromEl('q1-3')">▶</button>
           <button onclick="speakSlowFromEl('q1-3')">🐢</button>
@@ -144,7 +160,7 @@
   <!-- BLOQUE 2 -->
   <div class="card">
     <h2 id="name-ol2">DONDE</h2>
-    <p id="txt-ol2">SIEMPRE SE HACIAN EN UN MISMO LUGAR LLAMADO OLIMPIA.</p>
+    <p id="txt-ol2">LAS OLIMPIADAS SE HACIAN SIEMPRE EN EL MISMO LUGAR. ESE LUGAR SE LLAMABA OLIMPIA. LAS PERSONAS VIAJABAN DESDE MUY LEJOS. IBAN CAMINANDO DURANTE MUCHOS DIAS. TODOS SE REUNIAN ALLI PARA VER LOS JUEGOS.</p>
 
     <div class="row">
       <button onclick="leerNormal('name-ol2','txt-ol2')">▶ ESCUCHAR</button>
@@ -153,7 +169,7 @@
 
     <div class="qbox">
       <div class="q">
-        <div class="qtext" id="q2-1">DONDE SE HACÍAN</div>
+        <div class="qtext" id="q2-1">DONDE SE HACIAN</div>
         <div class="row">
           <button onclick="speakFromEl('q2-1')">▶</button>
           <button onclick="speakSlowFromEl('q2-1')">🐢</button>
@@ -192,8 +208,8 @@
 
   <!-- BLOQUE 3 -->
   <div class="card">
-    <h2 id="name-ol3">QUE HACÍAN</h2>
-    <p id="txt-ol3">LOS ATLETAS CORRIAN LUCHABAN Y LANZABAN DISCOS O PIEDRAS.</p>
+    <h2 id="name-ol3">QUIENES</h2>
+    <p id="txt-ol3">PARTICIPABAN ATLETAS DE DIFERENTES CIUDADES. ERAN HOMBRES ADULTOS Y FUERTES. ENTRENABAN SU CUERPO CADA DIA. CADA ATLETA COMPETIA SOLO. NO HABIA EQUIPOS COMO AHORA.</p>
 
     <div class="row">
       <button onclick="leerNormal('name-ol3','txt-ol3')">▶ ESCUCHAR</button>
@@ -202,19 +218,19 @@
 
     <div class="qbox">
       <div class="q">
-        <div class="qtext" id="q3-1">QUE HACÍAN LOS ATLETAS</div>
+        <div class="qtext" id="q3-1">QUIENES PARTICIPABAN</div>
         <div class="row">
           <button onclick="speakFromEl('q3-1')">▶</button>
           <button onclick="speakSlowFromEl('q3-1')">🐢</button>
         </div>
         <div class="optrow">
-          <button class="opt" onclick="answer(this,true)">DEPORTE</button>
-          <button class="opt" onclick="answer(this,false)">MAGIA</button>
+          <button class="opt" onclick="answer(this,true)">ATLETAS</button>
+          <button class="opt" onclick="answer(this,false)">REYES</button>
         </div>
       </div>
 
       <div class="q">
-        <div class="qtext" id="q3-2">CORRÍAN</div>
+        <div class="qtext" id="q3-2">ENTRENABAN CADA DIA</div>
         <div class="row">
           <button onclick="speakFromEl('q3-2')">▶</button>
           <button onclick="speakSlowFromEl('q3-2')">🐢</button>
@@ -226,7 +242,7 @@
       </div>
 
       <div class="q">
-        <div class="qtext" id="q3-3">GANABAN DINERO</div>
+        <div class="qtext" id="q3-3">HABIA EQUIPOS</div>
         <div class="row">
           <button onclick="speakFromEl('q3-3')">▶</button>
           <button onclick="speakSlowFromEl('q3-3')">🐢</button>
@@ -239,91 +255,365 @@
     </div>
   </div>
 
+  <!-- BLOQUE 4 -->
+  <div class="card">
+    <h2 id="name-ol4">PRUEBAS</h2>
+    <p id="txt-ol4">LOS ATLETAS CORRIAN EN CARRERAS. TAMBIEN LUCHABAN CUERPO A CUERPO. LANZABAN DISCOS Y PIEDRAS PESADAS. ALGUNOS SALTABAN MUY LEJOS. TODAS LAS PRUEBAS ERAN FISICAS.</p>
+
+    <div class="row">
+      <button onclick="leerNormal('name-ol4','txt-ol4')">▶ ESCUCHAR</button>
+      <button onclick="leerLento('name-ol4','txt-ol4')">🐢 LENTO</button>
+    </div>
+
+    <div class="qbox">
+      <div class="q">
+        <div class="qtext" id="q4-1">QUE HACIAN EN LAS OLIMPIADAS</div>
+        <div class="row">
+          <button onclick="speakFromEl('q4-1')">▶</button>
+          <button onclick="speakSlowFromEl('q4-1')">🐢</button>
+        </div>
+        <div class="optrow">
+          <button class="opt" onclick="answer(this,true)">PRUEBAS</button>
+          <button class="opt" onclick="answer(this,false)">EXAMENES</button>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qtext" id="q4-2">LANZABAN DISCOS</div>
+        <div class="row">
+          <button onclick="speakFromEl('q4-2')">▶</button>
+          <button onclick="speakSlowFromEl('q4-2')">🐢</button>
+        </div>
+        <div class="optrow">
+          <button class="opt" onclick="answer(this,true)">SI</button>
+          <button class="opt" onclick="answer(this,false)">NO</button>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qtext" id="q4-3">ERAN PRUEBAS DE COMIDA</div>
+        <div class="row">
+          <button onclick="speakFromEl('q4-3')">▶</button>
+          <button onclick="speakSlowFromEl('q4-3')">🐢</button>
+        </div>
+        <div class="optrow">
+          <button class="opt" onclick="answer(this,false)">SI</button>
+          <button class="opt" onclick="answer(this,true)">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOQUE 5 -->
+  <div class="card">
+    <h2 id="name-ol5">PREMIO</h2>
+    <p id="txt-ol5">EL GANADOR NO RECIBIA DINERO. RECIBIA UNA CORONA DE HOJAS. ESA CORONA ERA MUY IMPORTANTE. EL GANADOR ERA MUY RESPETADO. SU CIUDAD ESTABA MUY ORGULLOSA.</p>
+
+    <div class="row">
+      <button onclick="leerNormal('name-ol5','txt-ol5')">▶ ESCUCHAR</button>
+      <button onclick="leerLento('name-ol5','txt-ol5')">🐢 LENTO</button>
+    </div>
+
+    <div class="qbox">
+      <div class="q">
+        <div class="qtext" id="q5-1">QUE GANABAN</div>
+        <div class="row">
+          <button onclick="speakFromEl('q5-1')">▶</button>
+          <button onclick="speakSlowFromEl('q5-1')">🐢</button>
+        </div>
+        <div class="optrow">
+          <button class="opt" onclick="answer(this,true)">CORONA</button>
+          <button class="opt" onclick="answer(this,false)">DINERO</button>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qtext" id="q5-2">GANABAN DINERO</div>
+        <div class="row">
+          <button onclick="speakFromEl('q5-2')">▶</button>
+          <button onclick="speakSlowFromEl('q5-2')">🐢</button>
+        </div>
+        <div class="optrow">
+          <button class="opt" onclick="answer(this,false)">SI</button>
+          <button class="opt" onclick="answer(this,true)">NO</button>
+        </div>
+      </div>
+
+      <div class="q">
+        <div class="qtext" id="q5-3">EL GANADOR ERA RESPETADO</div>
+        <div class="row">
+          <button onclick="speakFromEl('q5-3')">▶</button>
+          <button onclick="speakSlowFromEl('q5-3')">🐢</button>
+        </div>
+        <div class="optrow">
+          <button class="opt" onclick="answer(this,true)">SI</button>
+          <button class="opt" onclick="answer(this,false)">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- DICTADO -->
   <div class="card">
     <h2>DICTADO</h2>
-    <p id="dict-instr">AHORA VAS A ESCUCHAR PALABRAS TRES VECES. COPIA UNA VEZ.</p>
+
+    <p id="dict-instr">AHORA VAS A ESCUCHAR PALABRAS TRES VECES. COPIA EN UN PAPEL. RECUERDA QUE SON PALABRAS QUE ESTAN EN ESTE TEXTO. PUEDES BUSCARLA PARA COPIARLA.</p>
     <div class="row">
       <button onclick="speakFromEl('dict-instr')">▶</button>
       <button onclick="speakSlowFromEl('dict-instr')">🐢</button>
     </div>
 
     <div class="dict-item">
-      <p id="d1"></p>
+      <p id="d1" class="secret">OLIMPIA</p>
       <div class="row">
-        <button onclick="dictateFromEl('d1',false)">▶</button>
-        <button onclick="dictateFromEl('d1',true)">🐢</button>
+        <button onclick="dictateFromEl('d1', false)">▶</button>
+        <button onclick="dictateFromEl('d1', true)">🐢</button>
       </div>
-      <textarea></textarea>
+      <textarea placeholder="ESCRIBE AQUI..."></textarea>
     </div>
 
     <div class="dict-item">
-      <p id="d2"></p>
+      <p id="d2" class="secret">JUEGOS DEPORTIVOS</p>
       <div class="row">
-        <button onclick="dictateFromEl('JUEGOS DEPORTIVOS',false)">▶</button>
-        <button onclick="dictateFromEl('JUEGOS DEPORTIVOS',true)">🐢</button>
+        <button onclick="dictateFromEl('d2', false)">▶</button>
+        <button onclick="dictateFromEl('d2', true)">🐢</button>
       </div>
-      <textarea></textarea>
+      <textarea placeholder="ESCRIBE AQUI..."></textarea>
     </div>
 
     <div class="dict-item">
-      <p id="d3"></p>
+      <p id="d3" class="secret">CORONA DE HOJAS</p>
       <div class="row">
-        <button onclick="dictateFromEl('RESPETO Y ESFUERZO',false)">▶</button>
-        <button onclick="dictateFromEl('RESPETO Y ESFUERZO',true)">🐢</button>
+        <button onclick="dictateFromEl('d3', false)">▶</button>
+        <button onclick="dictateFromEl('d3', true)">🐢</button>
       </div>
-      <textarea></textarea>
+      <textarea placeholder="ESCRIBE AQUI..."></textarea>
     </div>
+
   </div>
 
 </div>
 
 <script>
 const synth = window.speechSynthesis;
+
 function vozES(){
-  const vs = synth.getVoices()||[];
-  return vs.find(v=>(v.lang||"").startsWith("es"))||null;
+  const vs = synth.getVoices() || [];
+  return vs.find(v => (v.lang||"").toLowerCase().startsWith("es-es"))
+      || vs.find(v => (v.lang||"").toLowerCase().startsWith("es"))
+      || null;
 }
-function speakPlain(t){
-  synth.cancel();
-  const u=new SpeechSynthesisUtterance(t.toLowerCase());
-  const v=vozES(); if(v) u.voice=v;
-  u.lang="es-ES"; u.rate=.95; synth.speak(u);
+
+function speakTextForVoice(displayText){
+  return (displayText || "").toLowerCase();
 }
-function speakFromEl(id){speakPlain(document.getElementById(id).innerText);}
-function speakSlowFromEl(id){
+
+/* karaoke prep */
+function prepare(el){
+  if(!el) return;
+  if(el.dataset.ready === "1") return;
+
+  const raw = el.innerText;
+  el.dataset.raw = raw;
+
+  const tokens = raw.split(/(\s+)/);
+  el.innerHTML = "";
+  el._words = [];
+
+  tokens.forEach(t=>{
+    if(t === "") return;
+    if(/^\s+$/.test(t)){
+      el.appendChild(document.createTextNode(t));
+    }else{
+      const s = document.createElement("span");
+      s.className = "word";
+      s.textContent = t;
+      el.appendChild(s);
+      el._words.push(s);
+    }
+  });
+
+  el.dataset.ready = "1";
+}
+
+function clearHL(el){
+  if(!el || !el._words) return;
+  el._words.forEach(w=>w.classList.remove("hl"));
+}
+
+function speakPlain(text, opts={}){
   synth.cancel();
-  const el=document.getElementById(id);
-  const words=el.innerText.split(/\s+/);
-  let i=0; const v=vozES();
+  const v = vozES();
+  const u = new SpeechSynthesisUtterance(speakTextForVoice(text));
+  if(v) u.voice = v;
+  u.lang = "es-ES";
+  u.rate = opts.rate ?? 0.95;
+  u.pitch = opts.pitch ?? 1.02;
+  synth.speak(u);
+  return u;
+}
+
+function speakFromEl(elId){
+  const el = document.getElementById(elId);
+  if(!el) return;
+  speakPlain(el.innerText);
+}
+
+/* SLOW + HIGHLIGHT */
+function speakSlowHighlightEl(el, opts = {}){
+  synth.cancel();
+  const v = vozES();
+
+  prepare(el);
+  clearHL(el);
+
+  const words = el._words.map(w => w.innerText);
+  let i = 0;
+
   function next(){
-    if(i>=words.length) return;
-    const u=new SpeechSynthesisUtterance(words[i].toLowerCase());
-    if(v) u.voice=v; u.rate=.75;
-    u.onend=()=>{i++;setTimeout(next,250)};
+    if(i >= words.length){
+      clearHL(el);
+      return;
+    }
+    clearHL(el);
+    el._words[i].classList.add("hl");
+
+    const u = new SpeechSynthesisUtterance(speakTextForVoice(words[i]));
+    if(v) u.voice = v;
+    u.lang = "es-ES";
+    u.rate = opts.rate ?? 0.75;
+    u.pitch = opts.pitch ?? 1.02;
+
+    u.onend = () => {
+      i++;
+      setTimeout(next, opts.pause ?? 250);
+    };
     synth.speak(u);
-  } next();
+  }
+
+  next();
 }
-function speakSlowHighlightTemp(t){speakPlain(t);}
-function leerNormal(a,b){speakPlain(document.getElementById(a).innerText+" "+document.getElementById(b).innerText);}
-function leerLento(a,b){speakSlowFromEl(a); setTimeout(()=>speakSlowFromEl(b),800);}
-function answer(btn,ok){
-  const q=btn.closest(".q");
-  if(q.classList.contains("correct")) return;
-  if(ok){
+
+function speakSlowFromEl(elId){
+  const el = document.getElementById(elId);
+  if(!el) return;
+  speakSlowHighlightEl(el, {rate:0.75, pause:250});
+}
+
+function speakSlowHighlightTemp(text){
+  const tmp = document.createElement("div");
+  tmp.style.position = "absolute";
+  tmp.style.left = "-9999px";
+  tmp.style.top = "-9999px";
+  tmp.innerText = text;
+  document.body.appendChild(tmp);
+  speakSlowHighlightEl(tmp, {rate:0.75, pause:250});
+  setTimeout(()=>tmp.remove(), 6000);
+}
+
+/* LECTURAS DE BLOQUE */
+function leerNormal(idNombre, idTexto){
+  synth.cancel();
+  const v = vozES();
+
+  const nombre = document.getElementById(idNombre).innerText;
+  const texto  = document.getElementById(idTexto).innerText;
+
+  const u1 = new SpeechSynthesisUtterance(speakTextForVoice(nombre));
+  if(v) u1.voice = v;
+  u1.lang = "es-ES";
+  u1.rate = 0.95;
+  u1.pitch = 1.02;
+
+  const u2 = new SpeechSynthesisUtterance(speakTextForVoice(texto));
+  if(v) u2.voice = v;
+  u2.lang = "es-ES";
+  u2.rate = 0.95;
+  u2.pitch = 1.02;
+
+  // PAUSA ENTRE TITULO Y PARRAFO
+  u1.onend = () => setTimeout(()=> synth.speak(u2), 550);
+
+  synth.speak(u1);
+}
+
+function leerLento(idNombre, idTexto){
+  synth.cancel();
+  const v = vozES();
+
+  const nameEl = document.getElementById(idNombre);
+  const textEl = document.getElementById(idTexto);
+
+  const u1 = new SpeechSynthesisUtterance(speakTextForVoice(nameEl.innerText));
+  if(v) u1.voice = v;
+  u1.lang = "es-ES";
+  u1.rate = 0.9;
+  u1.pitch = 1.02;
+
+  // PAUSA ENTRE TITULO Y PARRAFO (y luego karaoke)
+  u1.onend = () => setTimeout(()=> speakSlowHighlightEl(textEl, {rate:0.75, pause:250}), 750);
+
+  synth.speak(u1);
+}
+
+/* TEST */
+function answer(btn, isCorrect){
+  const q = btn.closest(".q");
+  if(!q || q.classList.contains("correct")) return;
+
+  if(isCorrect){
     q.classList.add("correct");
     btn.classList.add("correct");
-    q.querySelectorAll("button").forEach(b=>b.disabled=true);
+    q.querySelectorAll(".opt").forEach(b => b.disabled = true);
   }
 }
-function dictateFromEl(id,slow){
-  const t=document.getElementById(id).innerText;
-  let n=0;
-  function say(){
-    if(n>=3) return;
-    speakPlain(t);
-    n++; setTimeout(say,slow?1200:600);
-  } say();
+
+/* DICTADO: 3 VECES, NORMAL O LENTO */
+function dictateFromEl(elId, slow){
+  const el = document.getElementById(elId);
+  if(!el) return;
+
+  const text = el.innerText;
+  synth.cancel();
+  const v = vozES();
+
+  if(!slow){
+    let count = 0;
+    function say(){
+      if(count >= 3) return;
+      const u = new SpeechSynthesisUtterance(speakTextForVoice(text));
+      if(v) u.voice = v;
+      u.lang = "es-ES";
+      u.rate = 0.95;
+      u.pitch = 1.02;
+      u.onend = () => { count++; setTimeout(say, 450); };
+      synth.speak(u);
+    }
+    say();
+  }else{
+    let round = 0;
+    const words = text.split(/\s+/).filter(Boolean);
+    function speakRound(){
+      if(round >= 3) return;
+      let i = 0;
+      function nextWord(){
+        if(i >= words.length){
+          round++;
+          setTimeout(speakRound, 500);
+          return;
+        }
+        const u = new SpeechSynthesisUtterance(speakTextForVoice(words[i]));
+        if(v) u.voice = v;
+        u.lang = "es-ES";
+        u.rate = 0.75;
+        u.pitch = 1.02;
+        u.onend = () => { i++; setTimeout(nextWord, 220); };
+        synth.speak(u);
+      }
+      nextWord();
+    }
+    speakRound();
+  }
 }
 </script>
 </body>
